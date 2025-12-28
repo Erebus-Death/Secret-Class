@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <!-- ADD THIS VIEWPORT TAG - this is CRITICAL for mobile -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Secret Class - Read All Chapters Online</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="icon" href="fav-icon-modified.png" type="image/jpeg">
+
+        
+        <!-- ADD Font Awesome for icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        
+        <style>
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            body { 
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                background-color: #0a0e1a;
+                color: #e5e7eb;
+            }
+            .gradient-text { 
+                background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%); 
+                -webkit-background-clip: text; 
+                -webkit-text-fill-color: transparent; 
+                background-clip: text; 
+            }
+            .card-hover { transition: all 0.3s ease; }
+            .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(139, 92, 246, 0.2); }
+            .chapter-item { 
+                transition: all 0.2s ease; 
+                border-left: 3px solid transparent; 
+            }
+            .chapter-item:hover { 
+                background-color: rgba(139, 92, 246, 0.1); 
+                border-left-color: #8b5cf6; 
+            }
+            
+            /* ADD THESE CLASSES: */
+            .btn-primary {
+                background: #8b5cf6;
+                color: white;
+                padding: 12px 32px;
+                border-radius: 9999px;
+                font-weight: 600;
+                transition: all 0.2s;
+                border: none;
+                cursor: pointer;
+            }
+            .btn-primary:hover { background: #7c3aed; transform: scale(1.05); }
+            
+            .btn-secondary {
+                background: transparent;
+                color: #8b5cf6;
+                padding: 12px 32px;
+                border-radius: 9999px;
+                font-weight: 600;
+                transition: all 0.2s;
+                border: 2px solid #8b5cf6;
+                cursor: pointer;
+            }
+            .btn-secondary:hover { background: #8b5cf6; color: white; }
+            
+            .nav-link { color: #d1d5db; transition: color 0.2s; text-decoration: none; }
+            .nav-link:hover { color: #8b5cf6; }
+            
+            .tag { 
+                background: rgba(139, 92, 246, 0.2);
+                color: #8b5cf6;
+                padding: 8px 16px;
+                border-radius: 9999px;
+                font-size: 0.875rem;
+                display: inline-block;
+            }
+            
+            /* THIS IS THE "NEW" BADGE */
+            .badge-new {
+                background: #ec4899;
+                color: white;
+                padding: 2px 8px;
+                border-radius: 9999px;
+                font-size: 0.75rem;
+                font-weight: bold;
+                display: inline-block;
+            }
+            
+            .reader-img { 
+                max-width: 100%; 
+                height: auto; 
+                display: block; 
+                margin: 0 auto; 
+                border-radius: 8px;
+            }
+            #scrollTopBtn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 100;
+    background: #8b5cf6;
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    padding: 12px 16px;
+    font-size: 1.25rem;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none; /* Prevent clicks when hidden */
+    transition: opacity 0.3s ease;
+}
+#scrollTopBtn.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+.nav-btn {
+    background-color: #8b5cf6;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+
+.nav-btn:hover:not(:disabled) {
+    background-color: #7c3aed;
+}
+
+.nav-btn:disabled {
+    background-color: #d8b4fe;
+    cursor: not-allowed;
+}
+
+.top-nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* for very small screens */
+    gap: 8px; /* spacing if stacked */
+}
+
+            
+            /* Responsive fixes */
+            @media (max-width: 768px) {
+                img {
+                    max-width: 100%;
+                    height: auto;
+                }
+                .reader-img {
+                    width: 100% !important;
+                    max-width: 100vw !important;
+                    margin-left: 0 !important;
+                    margin-right: 0 !important;
+                }
+                .btn-primary, .btn-secondary {
+                    padding: 14px 28px !important;
+                    font-size: 1rem !important;
+                }
+                .container-responsive {
+                    padding-left: 12px !important;
+                    padding-right: 12px !important;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                h1 { font-size: 2rem !important; }
+                h2 { font-size: 1.5rem !important; }
+                .button-group {
+                    flex-direction: column !important;
+                    gap: 12px !important;
+                }
+            }
+            
+            /* Prevent horizontal scroll */
+            html, body {
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+        </style>
+    </head>
+<body>
+  <!-- Navigation - SAME COLORS, just responsive -->
+<nav style="background-color: #151b2e; border-bottom: 1px solid #1f2937; position: sticky; top: 0; z-index: 50;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 12px 16px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <!-- Logo stays the same -->
+            <a href="#" onclick="loadPage('home'); return false;" class="gradient-text" style="font-size: 1.5rem; font-weight: bold; text-decoration: none;">
+                Secret Class
+            </a>
+            
+            <!-- Mobile menu button (hidden on desktop) -->
+            <button id="mobileMenuBtn" style="display: none; background: none; border: none; color: #d1d5db; font-size: 1.5rem; cursor: pointer;">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- Desktop menu (shown on larger screens) -->
+            <div id="desktopMenu" style="display: flex; align-items: center; gap: 24px;">
+                <a href="#" onclick="loadPage('home'); return false;" class="nav-link">Home</a>
+                <a href="#" onclick="loadPage('chapters'); return false;" class="nav-link">All Chapters</a>
+                <a href="#" onclick="loadPage('about'); return false;" class="nav-link">About</a>
+                <div style="position: relative;">
+                    <input type="number" id="chapterSearch" placeholder="Ch #" 
+                           style="width: 100px; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 8px; padding: 8px 12px; color: #e5e7eb; font-size: 0.875rem;"
+                           onkeypress="if(event.key==='Enter') searchChapter()">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu (hidden by default) -->
+        <div id="mobileMenu" style="display: none; margin-top: 16px; border-top: 1px solid #1f2937; padding-top: 16px;">
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <a href="#" onclick="loadPage('home'); hideMobileMenu(); return false;" class="nav-link" style="padding: 12px 0;">Home</a>
+                <a href="#" onclick="loadPage('chapters'); hideMobileMenu(); return false;" class="nav-link" style="padding: 12px 0;">All Chapters</a>
+                <a href="#" onclick="loadPage('about'); hideMobileMenu(); return false;" class="nav-link" style="padding: 12px 0;">About</a>
+                <div>
+                    <input type="number" id="chapterSearchMobile" placeholder="Chapter #" 
+                           style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 8px; padding: 12px; color: #e5e7eb; margin-bottom: 8px;"
+                           onkeypress="if(event.key==='Enter') searchChapterMobile()">
+                    <button onclick="searchChapterMobile()" style="width: 100%; background: #8b5cf6; color: white; border: none; border-radius: 8px; padding: 12px; cursor: pointer;">
+                        Search Chapter
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <!-- Main Content -->
+    <div id="mainContent"></div>
+
+    <!-- Footer -->
+    <footer style="background-color: #151b2e; border-top: 1px solid #1f2937; margin-top: 64px;">
+        <div style="max-width: 1280px; margin: 0 auto; padding: 32px 16px; text-align: center;">
+            <p style="color: #9ca3af; font-size: 0.875rem; margin-bottom: 8px;">© 2025 Secret Class Reader. All manhwa content belongs to its respective owners.</p>
+            <p style="color: #6b7280; font-size: 0.75rem;">This is a fan-made reading platform. Support the official release.</p>
+        </div>
+    </footer>
+
+    <script>
+  // Data Structure
+const manhwaData = {
+    title: "Secret Class",
+    originalTitle: "은밀한 수업",
+    author: "Gang-cheol Wang",
+    artist: "Minachan",
+    status: "Ongoing",
+    genres: ["Romance", "Drama", "Adult", "Slice of Life"],
+    rating: 8.7,
+    description: "Dae Ho, who became an orphan at the age of 13, was adopted by his father's friend. However, Dae Ho in adulthood knew nothing about the relationship between men and women. Aunt and sisters decided to give pure Dae Ho a secret class...",
+    coverImage: "Home-img.jpg",
+    releaseYear: 2019,
+    contentWarning: "This manhwa contains mature content and is intended for adult audiences only. Reader discretion is advised."
+};
+const chapterCounts = {
+    "1": 17,
+    "2": 12,
+    "3": 8,
+    "4": 10,
+    "5": 9,
+    "6": 9,
+    "7": 10,
+    "8": 9,
+    "9": 10,
+    "10": 10,
+    "11": 8,
+    "12": 8,
+    "13": 9,
+    "14": 8,
+    "15": 9,
+    "16": 8,
+    "17": 8,
+    "18": 8,
+    "19": 8,
+    "20": 8,
+    "21": 9,
+    "22": 8,
+    "23": 9,
+    "24": 8,
+    "25": 9,
+    "26": 8,
+    "27": 8,
+    "28": 10,
+    "29": 8,
+    "30": 9,
+    "31": 8,
+    "32": 8,
+    "33": 8,
+    "34": 8,
+    "35": 7,
+    "36": 10,
+    "37": 10,
+    "38": 10,
+    "39": 9,
+    "40": 9,
+    "41": 10,
+    "42": 10,
+    "43": 8,
+    "44": 9,
+    "45": 9,
+    "46": 11,
+    "47": 11,
+    "48": 10,
+    "49": 10,
+    "50": 10
+};
+
+
+// ========== FIXED CHAPTER MANAGEMENT SYSTEM ==========
+// Now automatically detects how many chapters exist
+class ChapterManager {
+    constructor() {
+        this.chapters = [];
+        this.isLoading = false;
+        this.totalChapters = 0; // Will be auto-detected
+    }
+    
+    // Get all chapters with auto-detection
+    async getAllChapters() {
+        if (this.chapters.length > 0) {
+            return this.chapters;
+        }
+        
+        console.log("📚 Detecting chapters...");
+        this.isLoading = true;
+        
+        try {
+            await this.detectAndLoadChapters();
+            console.log(`✅ Detected ${this.totalChapters} total chapters`);
+            console.log(`✅ Loaded ${this.chapters.length} chapters`);
+            return this.chapters;
+        } catch (error) {
+            console.error("Error loading chapters:", error);
+            return this.generateFallbackChapters();
+        } finally {
+            this.isLoading = false;
+        }
+    }
+    
+    // Detect how many chapters exist and load them
+    async detectAndLoadChapters() {
+        // First, detect the highest chapter number that exists
+        this.totalChapters = await this.detectTotalChapters();
+        console.log(`📈 Highest chapter detected: ${this.totalChapters}`);
+        
+        // Now load all chapters up to the detected maximum
+        const chapters = [];
+        const today = new Date();
+        
+        for (let chapterNum = this.totalChapters; chapterNum >= 1; chapterNum--) {
+            const daysAgo = this.totalChapters - chapterNum;
+            const date = new Date(today);
+            date.setDate(date.getDate() - daysAgo);
+            
+            // Get images for this chapter
+            const images = await this.getChapterImages(chapterNum);
+            
+            chapters.push({
+                number: chapterNum,
+                title: `Chapter ${chapterNum}`,
+                date: date.toISOString().split('T')[0],
+                images: images,
+                hasRealImages: images.length > 0 && !images[0].includes('picsum.photos')
+            });
+        }
+        
+        this.chapters = chapters;
+    }
+    
+    // Detect the highest chapter number that exists
+    async detectTotalChapters() {
+        console.log("🔍 Detecting total chapters...");
+        
+        // We'll check up to 500 chapters maximum
+        const maxToCheck = 500;
+        let highestFound = 0;
+        
+        // Check in batches for efficiency
+        const batchSize = 10;
+        
+        for (let start = 1; start <= maxToCheck; start += batchSize) {
+            const batchPromises = [];
+            
+            // Create a batch of checks
+            for (let i = start; i < start + batchSize && i <= maxToCheck; i++) {
+                batchPromises.push(this.checkChapterExists(i));
+            }
+            
+            // Wait for batch results
+            const batchResults = await Promise.all(batchPromises);
+            
+            // Process results
+            for (let i = 0; i < batchResults.length; i++) {
+                const chapterNum = start + i;
+                if (batchResults[i]) {
+                    highestFound = chapterNum;
+                    console.log(`  Chapter ${chapterNum}: ✅ Exists`);
+                } else if (chapterNum <= highestFound + 5) {
+                    // Check a few beyond the highest found (in case of gaps)
+                    console.log(`  Chapter ${chapterNum}: ❌ Missing`);
+                }
+            }
+            
+            // If we haven't found any in this batch and we're well beyond the last found, stop
+            if (start > highestFound + 20 && highestFound > 0) {
+                console.log(`  Stopping detection at chapter ${start} (highest found: ${highestFound})`);
+                break;
+            }
+        }
+        
+        // If no chapters found, default to 1
+        return Math.max(highestFound, 1);
+    }
+    
+    // Check if a chapter folder exists
+    async checkChapterExists(chapterNum) {
+    return !!chapterCounts[chapterNum];
+}
+
+
+
+    
+// Get images for a single chapter (supports img-0 or img-1 start)
+async getChapterImages(chapterNum) {
+    const images = [];
+    const basePath = `./chapters/ch-${chapterNum}/`;
+    const totalImages = chapterCounts[chapterNum]; // use your chapter.json mapping
+
+    if (!totalImages) return []; // chapter not found
+
+    for (let i = 0; i < totalImages; i++) {
+        const imageUrl = `${basePath}img-${i}.jpg`;
+        images.push(imageUrl);
+    }
+
+    return images;
+}
+
+
+    
+    // Check if an image exists
+    async checkImageExists(url) {
+        return new Promise(resolve => {
+            const img = new Image();
+            let resolved = false;
+            
+            const timeout = setTimeout(() => {
+                if (!resolved) {
+                    resolved = true;
+                    resolve(false);
+                }
+            }, 300);
+            
+            img.onload = () => {
+                if (!resolved) {
+                    resolved = true;
+                    clearTimeout(timeout);
+                    resolve(img.naturalWidth > 10 && img.naturalHeight > 10);
+                }
+            };
+            
+            img.onerror = () => {
+                if (!resolved) {
+                    resolved = true;
+                    clearTimeout(timeout);
+                    resolve(false);
+                }
+            };
+            
+            img.src = url + '?t=' + Date.now(); // Cache buster
+        });
+    }
+    
+    // Fallback if everything fails
+    generateFallbackChapters() {
+        console.log("⚠️ Using fallback chapters");
+        const chapters = [];
+        const today = new Date();
+        
+        for (let i = 250; i >= 1; i--) {
+            const daysAgo = 250 - i;
+            const date = new Date(today);
+            date.setDate(date.getDate() - daysAgo);
+            
+            const images = [];
+            for (let page = 1; page <= 5; page++) {
+                images.push(`https://picsum.photos/seed/ch${i}p${page}/800/1200`);
+            }
+            
+            chapters.push({
+                number: i,
+                title: `Chapter ${i}`,
+                date: date.toISOString().split('T')[0],
+                images: images,
+                hasRealImages: false
+            });
+        }
+        
+        this.chapters = chapters;
+        this.totalChapters = 250;
+        return chapters;
+    }
+    
+    // Get a specific chapter
+    getChapter(number) {
+        return this.chapters.find(ch => ch.number === number);
+    }
+    
+    // Clear cache
+    clearCache() {
+        this.chapters = [];
+        this.totalChapters = 0;
+        console.log("🗑️ Chapter cache cleared");
+    }
+    
+    // Get stats
+    getStats() {
+        const chaptersWithImages = this.chapters.filter(ch => ch.hasRealImages).length;
+        return {
+            totalChapters: this.totalChapters,
+            chaptersLoaded: this.chapters.length,
+            chaptersWithImages: chaptersWithImages,
+            chaptersWithoutImages: this.chapters.length - chaptersWithImages
+        };
+    }
+}
+
+// ========== READING STATE MANAGEMENT ==========
+// This keeps you on the same page when refreshing
+
+class ReadingStateManager {
+    constructor() {
+        this.currentPage = sessionStorage.getItem('currentPage') || 'home';
+this.currentChapter = sessionStorage.getItem('currentChapter');
+
+    }
+    
+    // Get saved page from localStorage or URL
+    getSavedPage() {
+        // First check URL hash (e.g., #reader/1)
+        const hash = window.location.hash;
+        if (hash.startsWith('#reader/')) {
+            const chapterNum = parseInt(hash.replace('#reader/', ''));
+            if (chapterNum) {
+                this.saveChapter(chapterNum);
+                return 'reader';
+            }
+        }
+        
+        // Then check localStorage
+        return localStorage.getItem('currentPage') || 'home';
+    }
+    
+    // Get saved chapter from localStorage
+    getSavedChapter() {
+        const saved = localStorage.getItem('currentChapter');
+        return saved ? parseInt(saved) : null;
+    }
+    
+    // Save current page state
+    savePage(page, chapter = null) {
+        this.currentPage = page;
+        localStorage.setItem('currentPage', page);
+        
+        if (chapter) {
+            this.saveChapter(chapter);
+        }
+        
+        // Also update URL without reloading
+        if (page === 'reader' && chapter) {
+            window.history.replaceState(null, '', `#reader/${chapter}`);
+        } else {
+            window.history.replaceState(null, '', window.location.pathname);
+        }
+    }
+    
+    // Save current chapter
+    saveChapter(chapter) {
+        this.currentChapter = chapter;
+        localStorage.setItem('currentChapter', chapter);
+        localStorage.setItem('lastReadChapter', chapter); // Also update progress
+    }
+    
+    // Restore reading state
+    restoreState() {
+        console.log(`🔄 Restoring state: ${this.currentPage} ${this.currentChapter ? 'Ch.' + this.currentChapter : ''}`);
+        
+        if (this.currentPage === 'reader' && this.currentChapter) {
+            // We were reading a chapter - go back to it
+            return { page: 'reader', chapter: this.currentChapter };
+        } else {
+            // Go to home page
+            return { page: 'home', chapter: null };
+        }
+    }
+    
+    // Clear state (when going home manually)
+    clearState() {
+        localStorage.removeItem('currentPage');
+        localStorage.removeItem('currentChapter');
+        this.currentPage = 'home';
+        this.currentChapter = null;
+        window.history.replaceState(null, '', window.location.pathname);
+    }
+}
+
+// ========== GLOBAL VARIABLES ==========
+const chapterManager = new ChapterManager();
+const readingState = new ReadingStateManager();
+let chapters = [];
+
+// ========== INITIALIZE SITE ==========
+async function initializeSite() {
+    console.log("🚀 Starting site...");
+    
+    // Show loading state
+    document.getElementById('mainContent').innerHTML = `
+        <div style="max-width: 1280px; margin: 0 auto; padding: 48px 16px; text-align: center;">
+            <div style="width: 60px; height: 60px; border: 4px solid #1f2937; border-top-color: #8b5cf6; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 24px;"></div>
+            <h2 style="font-size: 1.5rem; margin-bottom: 8px;">Loading...</h2>
+            <p style="color: #9ca3af;">Detecting chapters and images</p>
+            <style>@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>
+        </div>
+    `;
+    
+    try {
+        // Load chapters
+        chapters = await chapterManager.getAllChapters();
+        console.log("🎉 Site ready!");
+        
+        // Restore reading state
+        const state = readingState.restoreState();
+        
+        // Show stats
+        const stats = chapterManager.getStats();
+        console.log("📊 Stats:", stats);
+        
+        // Load the appropriate page
+        loadPage(state.page, state.chapter);
+        
+    } catch (error) {
+        console.error("Failed to initialize:", error);
+        document.getElementById('mainContent').innerHTML = `
+            <div style="max-width: 1280px; margin: 0 auto; padding: 48px 16px; text-align: center;">
+                <h2 style="color: #f87171; font-size: 1.5rem; margin-bottom: 16px;">Failed to load</h2>
+                <p style="color: #9ca3af; margin-bottom: 24px;">${error.message}</p>
+                <button onclick="location.reload()" class="btn-primary">Retry</button>
+            </div>
+        `;
+    }
+}
+
+// ========== UPDATED PAGE RENDERING ==========
+function loadPage(page, chapterNum = null) {
+    const content = document.getElementById('mainContent');
+    window.scrollTo(0, 0);
+    
+    // Save state BEFORE rendering
+    readingState.savePage(page, chapterNum);
+    
+    if (page === 'home') {
+        content.innerHTML = renderHomePage();
+    } else if (page === 'chapters') {
+        content.innerHTML = renderChaptersPage();
+    } else if (page === 'about') {
+        content.innerHTML = renderAboutPage();
+    } else if (page === 'reader' && chapterNum) {
+    // 1️⃣ Render the reader page
+    content.innerHTML = renderReaderPage(chapterNum);
+
+    // 2️⃣ Save progress and set up controls
+    saveProgress(chapterNum);
+    setupReaderControls(chapterNum);
+
+    // 3️⃣ Lazy-load images using IntersectionObserver
+    const lazyImages = document.querySelectorAll('.reader-img');
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                obs.unobserve(img);
+            }
+        });
+    }, { rootMargin: "200px 0px" });
+
+    lazyImages.forEach(img => observer.observe(img));
+}
+
+}
+
+// ========== STORAGE FUNCTIONS ==========
+function saveProgress(chapterNum) {
+    localStorage.setItem('lastReadChapter', chapterNum);
+}
+
+function getProgress() {
+    return parseInt(localStorage.getItem('lastReadChapter')) || null;
+}
+
+function toggleBookmark(chapterNum) {
+    let bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+    const index = bookmarks.indexOf(chapterNum);
+    if (index > -1) {
+        bookmarks.splice(index, 1);
+    } else {
+        bookmarks.push(chapterNum);
+    }
+    localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+    return bookmarks.includes(chapterNum);
+}
+
+function isBookmarked(chapterNum) {
+    const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+    return bookmarks.includes(chapterNum);
+}
+
+// ========== PAGE RENDERING FUNCTIONS ==========
+function renderHomePage() {
+    const lastRead = getProgress();
+    const latestChapters = chapters.slice(0, 12);
+    
+    const isNew = (dateStr) => {
+        const chapterDate = new Date(dateStr);
+        const daysDiff = (new Date() - chapterDate) / (1000 * 60 * 60 * 24);
+        return daysDiff <= 7;
+    };
+
+    let html = '<div style="max-width: 1280px; margin: 0 auto; padding: 32px 16px;">';
+    
+    // Hero Section
+    html += '<div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%); border-radius: 24px; border: 1px solid #1f2937; padding: 48px; margin-bottom: 48px;">';
+    html += '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; align-items: center;">';
+    html += `<div style="text-align: center;"><img src="${manhwaData.coverImage}" alt="${manhwaData.title}" style="max-width: 300px; width: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);"></div>`;
+    html += '<div>';
+    html += `<h1 class="gradient-text" style="font-size: 3rem; font-weight: bold; margin-bottom: 8px;">${manhwaData.title}</h1>`;
+    html += `<p style="color: #9ca3af; margin-bottom: 16px;">${manhwaData.originalTitle}</p>`;
+    html += '<div style="display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap;">';
+    html += `<span class="tag">${manhwaData.status}</span>`;
+    html += `<span style="color: #fbbf24; display: flex; align-items: center; gap: 4px;">★ ${manhwaData.rating}/10</span>`;
+    html += '</div>';
+    html += '<div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">';
+    manhwaData.genres.forEach(g => {
+        html += `<span style="background: #151b2e; border: 1px solid #1f2937; padding: 6px 12px; border-radius: 9999px; font-size: 0.875rem;">${g}</span>`;
+    });
+    html += '</div>';
+    html += `<p style="color: #d1d5db; line-height: 1.6; margin-bottom: 24px;">${manhwaData.description}</p>`;
+    html += '<div style="display: flex; gap: 16px; flex-wrap: wrap;">';
+    if (lastRead) {
+        html += `<button onclick="loadPage('reader', ${lastRead})" class="btn-primary">Continue Reading (Ch. ${lastRead})</button>`;
+    } else {
+        html += `<button onclick="loadPage('reader', 1)" class="btn-primary">Start Reading</button>`;
+    }
+    html += `<button onclick="loadPage('chapters')" class="btn-secondary">All Chapters</button>`;
+    html += '</div>';
+    html += '</div></div></div>';
+
+    // Latest Chapters - Only show chapters that actually exist
+    const existingChapters = latestChapters.filter(ch => ch.hasRealImages || ch.images.length > 0);
+    
+    if (existingChapters.length > 0) {
+        html += '<div style="margin-bottom: 48px;">';
+        html += '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">';
+        html += '<h2 style="font-size: 2rem; font-weight: bold;">Latest Chapters</h2>';
+        html += '<a href="#" onclick="loadPage(\'chapters\'); return false;" style="color: #8b5cf6; font-weight: 600; text-decoration: none;">View All →</a>';
+        html += '</div>';
+        html += '<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">';
+        
+        existingChapters.forEach(ch => {
+            html += `<a href="#" onclick="loadPage('reader', ${ch.number}); return false;" class="chapter-item" style="background: #151b2e; border: 1px solid #1f2937; border-radius: 12px; padding: 16px; display: flex; align-items: center; justify-content: space-between; text-decoration: none; color: inherit;">`;
+            html += '<div style="flex: 1;">';
+            html += `<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">`;
+            html += `<h3 style="font-weight: 600; color: white;">${ch.title}</h3>`;
+            if (isNew(ch.date)) {
+                html += '<span class="badge-new">NEW</span>';
+            }
+            html += '</div>';
+            html += `<p style="color: #9ca3af; font-size: 0.875rem;">${ch.date}</p>`;
+            html += '</div>';
+            html += '<svg style="width: 24px; height: 24px; color: #6b7280;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>';
+            html += '</a>';
+        });
+        
+        html += '</div></div>';
+    }
+    
+    html += '</div>';
+    return html;
+}
+
+function renderChaptersPage() {
+    // Filter to only show chapters that exist
+    const existingChapters = chapters.filter(ch => ch.hasRealImages || ch.images.length > 0);
+    
+    let html = '<div style="max-width: 1280px; margin: 0 auto; padding: 32px 16px;">';
+    html += '<div style="margin-bottom: 32px;">';
+    html += '<h1 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 8px;">All Chapters</h1>';
+    html += `<p style="color: #9ca3af;">${existingChapters.length} chapters available</p>`;
+    html += '</div>';
+
+    if (existingChapters.length === 0) {
+        html += '<div style="text-align: center; padding: 48px; background: #151b2e; border-radius: 16px; border: 1px solid #1f2937;">';
+        html += '<p style="color: #9ca3af; font-size: 1.125rem;">No chapters uploaded yet.</p>';
+        html += '</div>';
+    } else {
+        html += '<div style="background: #151b2e; border: 1px solid #1f2937; border-radius: 16px; padding: 24px;">';
+        html += '<div style="display: flex; flex-direction: column; gap: 8px;">';
+        
+        existingChapters.forEach(ch => {
+            html += `<div class="chapter-item" style="display: flex; align-items: center; justify-content: space-between; padding: 16px; border-radius: 8px;">`;
+            html += `<a href="#" onclick="loadPage('reader', ${ch.number}); return false;" style="flex: 1; display: flex; align-items: center; gap: 16px; text-decoration: none; color: inherit;">`;
+            html += `<span style="color: #8b5cf6; font-weight: bold; font-size: 1.125rem; width: 80px;">#${ch.number}</span>`;
+            html += '<div style="flex: 1;">';
+            html += `<h3 style="font-weight: 600; color: white;">${ch.title}</h3>`;
+            html += `<p style="color: #9ca3af; font-size: 0.875rem;">${ch.date}</p>`;
+            html += '</div></a>';
+            html += `<button onclick="toggleBookmarkUI(${ch.number}, this); event.preventDefault();" style="background: transparent; border: none; cursor: pointer; padding: 8px;">`;
+            html += `<svg style="width: 20px; height: 20px; color: ${isBookmarked(ch.number) ? '#8b5cf6' : '#6b7280'};" fill="${isBookmarked(ch.number) ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path></svg>`;
+            html += '</button></div>';
+        });
+        
+        html += '</div></div>';
+    }
+    
+    html += '</div>';
+    return html;
+}
+
+function renderAboutPage() {
+    // ... keep your existing about page code ...
+    let html = '<div style="max-width: 900px; margin: 0 auto; padding: 32px 16px;">';
+    html += '<div style="background: #151b2e; border: 1px solid #1f2937; border-radius: 16px; padding: 48px;">';
+    html += `<h1 class="gradient-text" style="font-size: 2.5rem; font-weight: bold; margin-bottom: 32px;">About ${manhwaData.title}</h1>`;
+    
+    html += '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; margin-bottom: 32px;">';
+    html += `<img src="${manhwaData.coverImage}" alt="${manhwaData.title}" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">`;
+    html += '<div>';
+    html += `<div style="margin-bottom: 24px;"><h3 style="color: #9ca3af; font-size: 0.875rem; margin-bottom: 4px;">Original Title</h3><p style="font-size: 1.25rem;">${manhwaData.originalTitle}</p></div>`;
+    html += `<div style="margin-bottom: 24px;"><h3 style="color: #9ca3af; font-size: 0.875rem; margin-bottom: 4px;">Author</h3><p style="font-size: 1.25rem;">${manhwaData.author}</p></div>`;
+    html += `<div style="margin-bottom: 24px;"><h3 style="color: #9ca3af; font-size: 0.875rem; margin-bottom: 4px;">Artist</h3><p style="font-size: 1.25rem;">${manhwaData.artist}</p></div>`;
+    html += `<div style="margin-bottom: 24px;"><h3 style="color: #9ca3af; font-size: 0.875rem; margin-bottom: 4px;">Status</h3><span class="tag">${manhwaData.status}</span></div>`;
+    html += `<div style="margin-bottom: 24px;"><h3 style="color: #9ca3af; font-size: 0.875rem; margin-bottom: 4px;">Release Year</h3><p style="font-size: 1.25rem;">${manhwaData.releaseYear}</p></div>`;
+    html += '<div><h3 style="color: #9ca3af; font-size: 0.875rem; margin-bottom: 8px;">Genres</h3><div style="display: flex; flex-wrap: wrap; gap: 8px;">';
+    manhwaData.genres.forEach(g => {
+        html += `<span style="background: #1f2937; padding: 8px 16px; border-radius: 9999px;">${g}</span>`;
+    });
+    html += '</div></div>';
+    html += '</div></div>';
+
+    html += '<div style="border-top: 1px solid #1f2937; padding-top: 32px;">';
+    html += '<h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 16px;">Synopsis</h2>';
+    html += `<p style="color: #d1d5db; line-height: 1.8; margin-bottom: 32px;">${manhwaData.description}</p>`;
+    
+    html += '<div style="background: rgba(220, 38, 38, 0.1); border: 1px solid rgba(220, 38, 38, 0.3); border-radius: 8px; padding: 24px;">';
+    html += '<h3 style="color: #f87171; font-weight: bold; margin-bottom: 8px;">⚠️ Content Warning</h3>';
+    html += `<p style="color: #d1d5db;">${manhwaData.contentWarning}</p>`;
+    html += '</div></div>';
+
+    html += '</div></div>';
+    return html;
+}
+
+function renderReaderPage(chapterNum) {
+    const chapter = chapters.find(ch => ch.number === chapterNum);
+    if (!chapter) {
+        // Chapter not found - go back to chapters page
+        readingState.clearState();
+        return '<div style="text-align: center; padding: 48px;"><p>Chapter not found. <a href="#" onclick="loadPage(\'chapters\')">Browse chapters</a></p></div>';
+    }
+
+    const prevChapter = chapters.find(ch => ch.number === chapterNum - 1);
+    const nextChapter = chapters.find(ch => ch.number === chapterNum + 1);
+
+    let html = '<div>';
+    
+    // Reader Header
+// Reader Header (Clean Version)
+html += `
+<div style="
+    background: #151b2e; 
+    border-bottom: 1px solid #1f2937; 
+    position: sticky; 
+    top: 64px; 
+    z-index: 40;
+">
+    <div style="
+        max-width: 1280px; 
+        margin: 0 auto; 
+        padding: 16px; 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        flex-wrap: wrap; 
+        gap: 16px;
+    ">
+        <!-- Chapter Title and Date -->
+        <div>
+            <h2 style="font-size: 1.25rem; font-weight: bold;">${chapter.title}</h2>
+            <p style="color: #9ca3af; font-size: 0.875rem;">${chapter.date}</p>
+        </div>
+
+        <!-- Previous / Next Buttons -->
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            ${prevChapter ? `<button onclick="goToChapter(${prevChapter.number})" class="btn-secondary">← Previous</button>` : ''}
+            ${nextChapter ? `<button onclick="goToChapter(${nextChapter.number})" class="btn-secondary">Next →</button>` : ''}
+        </div>
+
+        <!-- Bookmark & Jump to Chapter -->
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <button onclick="event.preventDefault(); toggleBookmarkUI(${chapterNum}, this);" 
+                    style="background: transparent; border: none; cursor: pointer; padding: 8px;">
+                <svg style="width: 24px; height: 24px; color: ${isBookmarked(chapterNum) ? '#8b5cf6' : '#9ca3af'};" 
+                     fill="${isBookmarked(chapterNum) ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
+                </svg>
+            </button>
+
+            <select onchange="if(this.value) loadPage('reader', parseInt(this.value))" 
+                    style="background: #0a0e1a; border: 1px solid #1f2937; border-radius: 8px; padding: 8px 12px; color: #e5e7eb; font-size: 0.875rem;">
+                <option value="">Jump to...</option>
+                ${chapters.map(ch => (ch.hasRealImages || ch.images.length > 0) 
+                    ? `<option value="${ch.number}" ${ch.number === chapterNum ? 'selected' : ''}>Chapter ${ch.number}</option>` 
+                    : ''
+                ).join('')}
+            </select>
+        </div>
+    </div>
+</div>
+`;
+
+    // Chapter Images
+    html += '<div style="max-width: 900px; margin: 0 auto; padding: 32px 16px;">';
+    html += '<div style="display: flex; flex-direction: column; gap: 16px;">';
+    
+    if (chapter.images.length === 0) {
+        html += '<div style="text-align: center; padding: 48px; background: #151b2e; border-radius: 12px; border: 1px solid #1f2937;">';
+        html += '<p style="color: #9ca3af; font-size: 1.125rem;">No images found for this chapter.</p>';
+        html += '</div>';
+    } else {
+// Replace this:
+// chapter.images.forEach((img, idx) => {
+//     html += `<img src="${img}" alt="Page ${idx + 1}" loading="lazy" 
+//             onerror="if(!this.hasError) { this.hasError=true; this.src='https://picsum.photos/seed/ch${chapterNum}p${idx+1}/800/1200'; }"
+//             class="reader-img" loading="lazy">`;
+// });
+
+// With this:
+chapter.images.forEach((img, idx) => {
+    html += `<img 
+                data-src="${img}" 
+                alt="Page ${idx + 1}" 
+                class="reader-img lazy-image"
+                onerror="if(!this.hasError){ this.hasError=true; this.src='https://picsum.photos/seed/ch${chapterNum}p${idx+1}/800/1200'; }"
+            >`;
+});
+
+
+    }
+    
+    html += '</div></div>';
+
+    // Navigation
+    html += '<div style="background: #151b2e; border-top: 1px solid #1f2937; padding: 24px;">';
+    html += '<div style="max-width: 1280px; margin: 0 auto; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">';
+    if (prevChapter && (prevChapter.hasRealImages || prevChapter.images.length > 0)) {
+        html += `<button onclick="loadPage('reader', ${prevChapter.number})" class="btn-primary" style="display: flex; align-items: center; gap: 8px;"><svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg> Previous</button>`;
+    }
+    html += `<button onclick="loadPage('chapters')" class="btn-secondary">All Chapters</button>`;
+    if (nextChapter && (nextChapter.hasRealImages || nextChapter.images.length > 0)) {
+        html += `<button onclick="loadPage('reader', ${nextChapter.number})" class="btn-primary" style="display: flex; align-items: center; gap: 8px;">Next <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>`;
+    }
+    html += '</div></div>';
+
+    // Comments
+    html += '<div style="max-width: 900px; margin: 0 auto; padding: 32px 16px;">';
+    html += '<div style="background: #151b2e; border: 1px solid #1f2937; border-radius: 16px; padding: 32px;">';
+    html += '<h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 24px;">Comments</h3>';
+    html += '<textarea style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 8px; padding: 16px; color: #e5e7eb; resize: vertical;" rows="3" placeholder="Share your thoughts..."></textarea>';
+    html += '<button class="btn-primary" style="margin-top: 12px;">Post Comment</button>';
+    html += '<div style="margin-top: 32px; display: flex; flex-direction: column; gap: 24px;">';
+    
+    // Sample comments
+    const comments = [
+        { user: 'ManhwaFan123', time: '2 hours ago', text: 'Great chapter! The art quality keeps getting better.' },
+        { user: 'AnimeReader', time: '5 hours ago', text: 'Plot twist was unexpected! Amazing work.' },
+        { user: 'KoreanDramaFan', time: '1 day ago', text: 'Thanks for the upload! Love this series.' }
+    ];
+    
+    comments.forEach(comment => {
+        html += '<div style="border-top: 1px solid #1f2937; padding-top: 24px;">';
+        html += '<div style="display: flex; gap: 16px;">';
+        html += `<div style="width: 40px; height: 40px; background: #8b5cf6; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">${comment.user[0]}</div>`;
+        html += '<div style="flex: 1;">';
+        html += `<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;"><span style="font-weight: 600;">${comment.user}</span><span style="color: #6b7280; font-size: 0.875rem;">${comment.time}</span></div>`;
+        html += `<p style="color: #d1d5db;">${comment.text}</p>`;
+        html += '</div></div></div>';
+    });
+    
+    html += '</div></div></div>';
+    html += '</div>';
+    html += `
+<button id="scrollToTopBtn" 
+        style="
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #8b5cf6;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        ">
+    ↑
+</button>
+`;
+html += `
+<div class="top-nav-buttons flex justify-between w-full max-w-4xl mx-auto my-4 px-2">
+    <button onclick="goToChapter(${chapterNum - 1})" class="nav-btn" ${chapterNum === 1 ? 'disabled' : ''}>← Previous</button>
+    <button onclick="goToChapter(${chapterNum + 1})" class="nav-btn" ${chapterNum === chapters.length ? 'disabled' : ''}>Next →</button>
+</div>
+`;
+
+html += `<button id="scrollTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>`;
+
+    return html;
+}
+
+// ========== UI FUNCTIONS ==========
+function toggleBookmarkUI(chapterNum, button) {
+    const isNowBookmarked = toggleBookmark(chapterNum);
+    const svg = button.querySelector('svg');
+    
+    if (isNowBookmarked) {
+        svg.style.color = '#8b5cf6';
+        svg.setAttribute('fill', 'currentColor');
+    } else {
+        svg.style.color = '#6b7280';
+        svg.setAttribute('fill', 'none');
+    }
+}
+
+function searchChapter() {
+    const input = document.getElementById('chapterSearch');
+    const chapterNum = parseInt(input.value);
+    
+    if (chapterNum && chapterNum >= 1 && chapterNum <= chapters.length) {
+        const chapter = chapters.find(ch => ch.number === chapterNum);
+        if (chapter && (chapter.hasRealImages || chapter.images.length > 0)) {
+            loadPage('reader', chapterNum);
+            input.value = '';
+        } else {
+            alert('Chapter ' + chapterNum + ' has not been uploaded yet.');
+        }
+    } else {
+        alert('Please enter a valid chapter number (1-' + chapters.length + ')');
+    }
+}
+function goToChapter(chapterNum) {
+    const chapter = chapters.find(ch => ch.number === chapterNum);
+    if (chapter && (chapter.hasRealImages || chapter.images.length > 0)) {
+        loadPage('reader', chapterNum);
+    }
+}
+
+function setupReaderControls(chapterNum) {
+    document.onkeydown = function(e) {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        
+        const prevChapter = chapters.find(ch => ch.number === chapterNum - 1);
+        const nextChapter = chapters.find(ch => ch.number === chapterNum + 1);
+        
+        if (e.key === 'ArrowLeft' && prevChapter && (prevChapter.hasRealImages || prevChapter.images.length > 0)) {
+            loadPage('reader', prevChapter.number);
+        } else if (e.key === 'ArrowRight' && nextChapter && (nextChapter.hasRealImages || nextChapter.images.length > 0)) {
+            loadPage('reader', nextChapter.number);
+        }
+    };
+
+    // ===== Scroll-to-top button logic =====
+    const scrollBtn = document.getElementById('scrollTopBtn');
+
+window.addEventListener('scroll', () => {
+    if (!scrollBtn) return;
+    if (window.scrollY > 200) {
+        scrollBtn.classList.add('show'); // show when scrolled down
+    } else {
+        scrollBtn.classList.remove('show'); // hide when near top
+    }
+});
+
+    
+}
+
+
+// ========== START THE SITE ==========
+initializeSite();
+
+// ========== DEBUG TOOLS ==========
+window.debugTools = {
+    reloadChapters: () => {
+        chapterManager.clearCache();
+        readingState.clearState();
+        location.reload();
+    },
+    checkImage: async (chapter, page) => {
+        const url = `./chapters/ch-${chapter}/img-${page}.jpg`;
+        const exists = await chapterManager.checkImageExists(url);
+        console.log(`${url}: ${exists ? '✅ EXISTS' : '❌ MISSING'}`);
+        return exists;
+    },
+    scanChapter: async (chapter) => {
+        console.log(`Scanning Chapter ${chapter}...`);
+        const images = await chapterManager.getChapterImages(chapter);
+        console.log(`Found ${images.length} images:`);
+        images.forEach((img, i) => {
+            console.log(`  ${i+1}. ${img}`);
+        });
+        return images;
+    },
+    getStats: () => {
+        const stats = chapterManager.getStats();
+        console.log("📊 Current Stats:", stats);
+        return stats;
+    },
+    getReadingState: () => {
+        console.log("📖 Reading State:", {
+            currentPage: readingState.currentPage,
+            currentChapter: readingState.currentChapter,
+            savedPage: localStorage.getItem('currentPage'),
+            savedChapter: localStorage.getItem('currentChapter')
+        });
+        return readingState;
+    }
+};
+
+// Handle browser back/forward buttons
+window.addEventListener('popstate', function(event) {
+    // When URL changes (like from #reader/1 to no hash), restore state
+    const state = readingState.restoreState();
+    loadPage(state.page, state.chapter);
+});
+// ========== MOBILE FUNCTIONS ==========
+function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    
+    if (mobileMenu.style.display === 'none') {
+        mobileMenu.style.display = 'block';
+        menuBtn.innerHTML = '<i class="fas fa-times"></i>';
+    } else {
+        mobileMenu.style.display = 'none';
+        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    }
+}
+
+function hideMobileMenu() {
+    document.getElementById('mobileMenu').style.display = 'none';
+    document.getElementById('mobileMenuBtn').innerHTML = '<i class="fas fa-bars"></i>';
+}
+
+function searchChapterMobile() {
+    const input = document.getElementById('chapterSearchMobile');
+    const chapterNum = parseInt(input.value);
+    
+    if (chapterNum && chapterNum >= 1) {
+        const chapter = chapters.find(ch => ch.number === chapterNum);
+        if (chapter && (chapter.hasRealImages || chapter.images.length > 0)) {
+            loadPage('reader', chapterNum);
+            input.value = '';
+            hideMobileMenu();
+        } else {
+            alert('Chapter ' + chapterNum + ' not found.');
+            input.value = '';
+        }
+    } else {
+        alert('Please enter a valid chapter number');
+    }
+}
+
+
+
+// Initialize mobile responsiveness
+window.addEventListener('load', function() {
+    function checkScreenSize() {
+        const desktopMenu = document.getElementById('desktopMenu');
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (window.innerWidth <= 768) {
+            // Show mobile button, hide desktop menu
+            if (desktopMenu) desktopMenu.style.display = 'none';
+            if (mobileBtn) mobileBtn.style.display = 'block';
+            if (mobileMenu) mobileMenu.style.display = 'none';
+        } else {
+            // Show desktop menu, hide mobile
+            if (desktopMenu) desktopMenu.style.display = 'flex';
+            if (mobileBtn) mobileBtn.style.display = 'none';
+            if (mobileMenu) mobileMenu.style.display = 'none';
+        }
+    }
+    
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    
+    // Mobile menu button click
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    if (mobileBtn) {
+        mobileBtn.addEventListener('click', toggleMobileMenu);
+    }
+});
+    </script>
+</body>
+</html>
