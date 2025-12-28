@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -138,6 +139,42 @@
     align-items: center;
     flex-wrap: wrap; /* for very small screens */
     gap: 8px; /* spacing if stacked */
+}
+
+/* Hero cover image - keep original proportions, fully responsive */
+.hero-img {
+    display: block;
+    max-width: 350px;   /* desktop max size */
+    width: auto;        /* keep original aspect ratio */
+    height: auto;       /* scale height automatically */
+    border-radius: 16px; /* optional rounded corners */
+    margin: 0 auto;     /* center horizontally */
+    object-fit: cover;  /* fill nicely if using square container */
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .hero-img { max-width: 250px; }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+    .hero-img { max-width: 190px; }
+}
+
+
+/* Adjust size for tablets */
+@media (max-width: 768px) {
+    .hero-img {
+        max-width: 200px;
+    }
+}
+
+/* Adjust size for phones */
+@media (max-width: 480px) {
+    .hero-img {
+        max-width: 150px;
+    }
 }
 
             
@@ -731,7 +768,7 @@ function renderHomePage() {
     // Hero Section
     html += '<div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%); border-radius: 24px; border: 1px solid #1f2937; padding: 48px; margin-bottom: 48px;">';
     html += '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; align-items: center;">';
-    html += `<div style="text-align: center;"><img src="${manhwaData.coverImage}" alt="${manhwaData.title}" style="max-width: 300px; width: 100%; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);"></div>`;
+        html += `<div style="text-align: center;"><img src="${manhwaData.coverImage}" alt="${manhwaData.title}" class="hero-img" style="box-shadow: 0 20px 40px rgba(0,0,0,0.3);"></div>`;
     html += '<div>';
     html += `<h1 class="gradient-text" style="font-size: 3rem; font-weight: bold; margin-bottom: 8px;">${manhwaData.title}</h1>`;
     html += `<p style="color: #9ca3af; margin-bottom: 16px;">${manhwaData.originalTitle}</p>`;
