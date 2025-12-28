@@ -1,0 +1,6 @@
+# Chapter images (very large, do not track)
+chapters/
+
+# OS junk
+.DS_Store
+
